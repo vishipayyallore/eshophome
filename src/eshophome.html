@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eShop - Your one stop shop for all things tech</title>
+
+    <!-- CDD: Core Dependencies Setup -->
+    <!-- Load Tailwind CSS CDN for utility-first responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CDD: Custom Color Palette Configuration -->
+    <!-- Configure Tailwind with custom green, teal, and cyan color palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lime': {
+                            50: '#f7fee7',
+                            100: '#ecfccb',
+                            200: '#d9f99d',
+                            300: '#bef264',
+                            400: '#a3e635',
+                            500: '#84cc16',
+                            600: '#65a30d',
+                            700: '#4d7c0f',
+                            800: '#3f6212',
+                            900: '#365314',
+                            950: '#1a2e05'
+                        },
+                        'emerald': {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22'
+                        },
+                        'teal': {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2e'
+                        },
+                        'cyan': {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                            950: '#083344'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Include Font Awesome 6.5.0 for consistent iconography across all components -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-v2J6Y+7XQ4l0k3fZ+3p5g5m5b
+        crossorigin=" anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Import Google Fonts Roboto family for modern, readable typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- CDD: Performance Optimization -->
+    <!-- Add favicon for professional branding and faster browser caching -->
+    <!-- Include meta tags for SEO, viewport responsiveness, and social sharing -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium technology e-commerce with modern design">
+
+    <!-- CDD: Custom Styling Framework -->
+    <!-- External CSS for glassmorphism effects, animations, and sky blue theme -->
+    <!-- Includes hover states, transitions, and mobile-responsive breakpoints -->
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+    <!-- 
+    CDD: Header Navigation Component
+    Requirements: Sticky navbar with glassmorphism, responsive design
+    Features: Logo with gem icon, navigation links, shopping cart with badge
+    Behavior: Smooth scrolling, active state highlighting, mobile hamburger
+    Accessibility: Proper ARIA labels, keyboard navigation
+    -->
+    <nav class="sticky top-0 z-50 backdrop-blur-lg bg-emerald-100/80 border-b border-emerald-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-gem text-emerald-600 text-2xl"></i>
+                    <span class="text-2xl font-bold text-gray-800">eShop</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200">Home</a>
+                    <a href="#products"
+                        class="text-gray-700 hover:text-emerald-600 transition-colors duration-200">Products</a>
+                    <a href="#services"
+                        class="text-gray-700 hover:text-emerald-600 transition-colors duration-200">Services</a>
+                    <a href="#contact"
+                        class="text-gray-700 hover:text-emerald-600 transition-colors duration-200">Contact</a>
+                </div>
+
+                <!-- Shopping Cart -->
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-gray-700 hover:text-emerald-600 transition-colors duration-200">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span
+                            class="absolute -top-1 -right-1 bg-emerald-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors duration-200">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 
+    CDD: Hero Section with Call-to-Action
+    Design: Large gradient text, sky blue buttons, feature cards with glassmorphism
+    Content: Welcome message, primary CTA, secondary actions, value propositions
+    Layout: Centered content, responsive grid, animated elements on scroll
+    -->
+    <section id="home" class="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 to-teal-100">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
+                <span class="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                    Premium Tech
+                </span>
+                <br>
+                <span class="text-gray-800">Made Simple</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up">
+                Discover cutting-edge technology products with unmatched quality and style.
+                Your one-stop destination for premium gadgets and electronics.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up">
+                <button
+                    class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+                    Shop Now
+                </button>
+                <button
+                    class="border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-full font-semibold hover:bg-emerald-600 hover:text-white transition-all duration-200">
+                    Learn More
+                </button>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                <div
+                    class="backdrop-blur-lg bg-white/30 p-6 rounded-xl border border-white/20 hover:shadow-lg transition-shadow duration-200">
+                    <i class="fas fa-award text-emerald-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Premium Quality</h3>
+                    <p class="text-gray-600">Handpicked products from trusted brands worldwide</p>
+                </div>
+                <div
+                    class="backdrop-blur-lg bg-white/30 p-6 rounded-xl border border-white/20 hover:shadow-lg transition-shadow duration-200">
+                    <i class="fas fa-shipping-fast text-teal-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                    <p class="text-gray-600">Free shipping on orders over $99 with 2-day delivery</p>
+                </div>
+                <div
+                    class="backdrop-blur-lg bg-white/30 p-6 rounded-xl border border-white/20 hover:shadow-lg transition-shadow duration-200">
+                    <i class="fas fa-headset text-cyan-600 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Expert customer service whenever you need help</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    CDD: Interactive Product Carousel
+    Functionality: Auto-play slider with manual controls, touch/swipe support
+    Design: Sky blue navigation dots, smooth transitions, responsive images
+    Content: Featured product collections, promotional banners
+    Controls: Previous/next buttons, pagination indicators, pause on hover
+    -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Featured Collections</h2>
+
+            <div class="relative overflow-hidden rounded-xl">
+                <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+                    <!-- Slide 1 -->
+                    <div class="w-full flex-shrink-0 relative">
+                        <img src="https://placehold.co/1200x500/10b981/FFFFFF?text=Gaming+Collection"
+                            alt="Gaming Collection" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-4xl font-bold mb-4">Gaming Collection</h3>
+                                <p class="text-xl mb-6">Professional gaming gear for serious gamers</p>
+                                <button
+                                    class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl">
+                                    Explore Gaming
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="w-full flex-shrink-0 relative">
+                        <img src="https://placehold.co/1200x500/14b8a6/FFFFFF?text=Audio+Excellence"
+                            alt="Audio Collection" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-4xl font-bold mb-4">Audio Excellence</h3>
+                                <p class="text-xl mb-6">Premium headphones and speakers for audiophiles</p>
+                                <button
+                                    class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white px-8 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl">
+                                    Shop Audio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="w-full flex-shrink-0 relative">
+                        <img src="https://placehold.co/1200x500/06b6d4/FFFFFF?text=Smart+Devices" alt="Smart Devices"
+                            class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-4xl font-bold mb-4">Smart Devices</h3>
+                                <p class="text-xl mb-6">Connected technology for modern living</p>
+                                <button
+                                    class="bg-gradient-to-r from-cyan-600 to-emerald-500 hover:from-cyan-700 hover:to-emerald-600 text-white px-8 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl">
+                                    Discover Smart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button onclick="previousSlide()"
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-emerald-600 p-3 rounded-full shadow-lg transition-all duration-200">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="nextSlide()"
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-emerald-600 p-3 rounded-full shadow-lg transition-all duration-200">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Carousel Indicators -->
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <button onclick="goToSlide(0)"
+                        class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-100 transition-opacity duration-200"></button>
+                    <button onclick="goToSlide(1)"
+                        class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-200"></button>
+                    <button onclick="goToSlide(2)"
+                        class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-50 transition-opacity duration-200"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    CDD: Service Features Grid
+    Layout: 4-column responsive grid (mobile: 2x2, tablet: 2x2, desktop: 4x1)
+    Design: Sky blue icon backgrounds, glassmorphism cards, hover animations
+    Content: Quality assurance, fast delivery, easy returns, competitive pricing
+    Interaction: Hover effects, subtle scaling, smooth transitions
+    -->
+    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Why Choose eShop</h2>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div
+                    class="backdrop-blur-lg bg-white/50 p-6 rounded-xl border border-white/20 text-center hover:shadow-lg hover:scale-105 transition-all duration-200">
+                    <div
+                        class="bg-gradient-to-br from-emerald-600 to-emerald-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Quality Assured</h3>
+                    <p class="text-gray-600">Rigorous testing and quality control on every product</p>
+                </div>
+
+                <div
+                    class="backdrop-blur-lg bg-white/50 p-6 rounded-xl border border-white/20 text-center hover:shadow-lg hover:scale-105 transition-all duration-200">
+                    <div
+                        class="bg-gradient-to-br from-teal-600 to-teal-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-truck text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                    <p class="text-gray-600">Express shipping options with real-time tracking</p>
+                </div>
+
+                <div
+                    class="backdrop-blur-lg bg-white/50 p-6 rounded-xl border border-white/20 text-center hover:shadow-lg hover:scale-105 transition-all duration-200">
+                    <div
+                        class="bg-gradient-to-br from-cyan-600 to-cyan-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-undo text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Easy Returns</h3>
+                    <p class="text-gray-600">Hassle-free 30-day return policy with full refunds</p>
+                </div>
+
+                <div
+                    class="backdrop-blur-lg bg-white/50 p-6 rounded-xl border border-white/20 text-center hover:shadow-lg hover:scale-105 transition-all duration-200">
+                    <div
+                        class="bg-gradient-to-br from-lime-600 to-emerald-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <i class="fas fa-tags text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Best Prices</h3>
+                    <p class="text-gray-600">Competitive pricing with price match guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    CDD: Product Showcase Grid
+    Data: Trending products with images, ratings, prices, descriptions
+    Layout: Responsive grid (mobile: 1 col, tablet: 2 cols, desktop: 3 cols)
+    Features: Star ratings, price highlighting, add-to-cart buttons
+    Interaction: Card hover effects, button animations, quick view option
+    -->
+    <section id="products" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Trending Products</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div
+                    class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-200">
+                    <img src="https://placehold.co/400x300/10b981/FFFFFF?text=Gaming+Laptop" alt="Gaming Laptop"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Premium Gaming Laptop</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(4.5)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">High-performance gaming laptop with RTX graphics and 144Hz display
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-emerald-600">$1,299</span>
+                            <button
+                                class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-6 py-2 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div
+                    class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-200">
+                    <img src="https://placehold.co/400x300/14b8a6/FFFFFF?text=Wireless+Headphones"
+                        alt="Wireless Headphones" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Wireless Headphones Pro</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(5.0)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Noise-canceling wireless headphones with premium sound quality</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-teal-600">$199</span>
+                            <button
+                                class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white px-6 py-2 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div
+                    class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-200">
+                    <img src="https://placehold.co/400x300/06b6d4/FFFFFF?text=Smart+Watch" alt="Smart Watch"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Smart Watch Series X</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 ml-2">(4.2)</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Advanced fitness tracking with heart rate monitoring and GPS</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-cyan-600">$349</span>
+                            <button
+                                class="bg-gradient-to-r from-cyan-600 to-emerald-500 hover:from-cyan-700 hover:to-emerald-600 text-white px-6 py-2 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    CDD: Data Table Component
+    Structure: Complete product catalog with sortable columns
+    Design: Sky blue headers, alternating row colors, hover states
+    Features: Search functionality, filtering, pagination controls
+    Responsive: Horizontal scroll on mobile, collapsed view options
+    -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Product Catalog</h2>
+
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <div class="relative max-w-md mx-auto">
+                    <input type="text" placeholder="Search products..."
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Product
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Category
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Price
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Rating
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Stock
+                                </th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img class="h-12 w-12 rounded-lg object-cover"
+                                            src="https://placehold.co/100x100/10b981/FFFFFF?text=LP" alt="Laptop">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Premium Gaming Laptop</div>
+                                            <div class="text-sm text-gray-500">Model: GL-2024</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Gaming</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-emerald-600">$1,299
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">4.5/5</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">In
+                                        Stock</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-emerald-600 hover:text-emerald-900 mr-3">View</button>
+                                    <button class="text-emerald-600 hover:text-emerald-900">Add to Cart</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img class="h-12 w-12 rounded-lg object-cover"
+                                            src="https://placehold.co/100x100/14b8a6/FFFFFF?text=HP" alt="Headphones">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Wireless Headphones Pro</div>
+                                            <div class="text-sm text-gray-500">Model: WH-2024</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Audio</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-teal-600">$199</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5.0/5</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">In
+                                        Stock</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-teal-600 hover:text-teal-900 mr-3">View</button>
+                                    <button class="text-teal-600 hover:text-teal-900">Add to Cart</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors duration-200">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img class="h-12 w-12 rounded-lg object-cover"
+                                            src="https://placehold.co/100x100/06b6d4/FFFFFF?text=SW" alt="Smart Watch">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Smart Watch Series X</div>
+                                            <div class="text-sm text-gray-500">Model: SW-2024</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Wearables</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-cyan-600">$349</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">4.2/5</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Low
+                                        Stock</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-cyan-600 hover:text-cyan-900 mr-3">View</button>
+                                    <button class="text-cyan-600 hover:text-cyan-900">Add to Cart</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    CDD: Pagination Component
+    Design: Sky blue active states, clean button styling
+    Functionality: Previous/next navigation, page number display
+    Accessibility: ARIA labels, keyboard navigation, focus states
+    Behavior: Smooth transitions, disabled state handling
+    -->
+    <section class="py-8 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <nav class="flex items-center justify-between" aria-label="Pagination">
+                <div class="flex-1 flex justify-between sm:hidden">
+                    <button
+                        class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                        Previous
+                    </button>
+                    <button
+                        class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                        Next
+                    </button>
+                </div>
+                <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-center">
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <button
+                                class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button
+                                class="bg-emerald-600 border-emerald-600 text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</button>
+                            <button
+                                class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</button>
+                            <button
+                                class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</button>
+                            <button
+                                class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 
+    CDD: Footer Section
+    Layout: Multi-column responsive footer (mobile: stacked, desktop: 4 columns)
+    Content: Newsletter signup, company info, quick links, social media
+    Design: Sky blue gradient background, contrasting text, icon integration
+    Features: Email validation, social media links, copyright information
+    -->
+    <footer id="contact" class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i class="fas fa-gem text-2xl"></i>
+                        <span class="text-2xl font-bold">eShop</span>
+                    </div>
+                    <p class="text-sky-100 mb-4">
+                        Your premium destination for cutting-edge technology products.
+                        Quality, innovation, and customer satisfaction are our priorities.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-sky-200 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-sky-200 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-sky-200 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-sky-200 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home"
+                                class="text-sky-100 hover:text-white transition-colors duration-200">Home</a></li>
+                        <li><a href="#products"
+                                class="text-sky-100 hover:text-white transition-colors duration-200">Products</a></li>
+                        <li><a href="#services"
+                                class="text-sky-100 hover:text-white transition-colors duration-200">Services</a></li>
+                        <li><a href="#" class="text-sky-100 hover:text-white transition-colors duration-200">About
+                                Us</a></li>
+                        <li><a href="#contact"
+                                class="text-sky-100 hover:text-white transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Support -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sky-100 hover:text-white transition-colors duration-200">Help
+                                Center</a></li>
+                        <li><a href="#" class="text-sky-100 hover:text-white transition-colors duration-200">Track
+                                Order</a></li>
+                        <li><a href="#" class="text-sky-100 hover:text-white transition-colors duration-200">Returns</a>
+                        </li>
+                        <li><a href="#" class="text-sky-100 hover:text-white transition-colors duration-200">Shipping
+                                Info</a></li>
+                        <li><a href="#" class="text-sky-100 hover:text-white transition-colors duration-200">Contact
+                                Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Stay Updated</h3>
+                    <p class="text-sky-100 mb-4">Subscribe to our newsletter for the latest products and exclusive
+                        offers.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="flex-1 px-4 py-2 rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-300">
+                        <button
+                            class="bg-emerald-800 hover:bg-emerald-900 px-4 py-2 rounded-r-lg transition-colors duration-200">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-emerald-500 mt-8 pt-8 text-center">
+                <p class="text-sky-100">&copy; 2024 eShop. All rights reserved. Made with ❤️ for tech enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 
+    CDD: Floating Action Button
+    Purpose: Scroll-to-top functionality with smooth animation
+    Design: Sky blue gradient circle, Font Awesome up arrow, shadow effects
+    Behavior: Appears after scrolling 300px, smooth scroll to top on click
+    Positioning: Fixed bottom-right, responsive sizing, z-index management
+    -->
+    <button id="scrollToTopBtn" onclick="scrollToTop()"
+        class="fixed bottom-6 right-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-200 opacity-0 pointer-events-none z-50">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- 
+    CDD: JavaScript Enhancement Layer
+    Features: Carousel auto-play, smooth scrolling, scroll animations
+    Performance: Debounced scroll events, efficient DOM manipulation
+    Accessibility: Reduced motion support, keyboard event handling
+    Compatibility: Vanilla JS for broad browser support, progressive enhancement
+    -->
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>

@@ -2,8 +2,8 @@
 
 A modern, responsive e-commerce landing page showcasing premium technology products with a cohesive sky blue design theme.
 
-Start Time: XX:XX PM IST
-End Time: XX:XX PM IST
+Start Time: 18:45 PM IST![alt text](image.png)
+End Time: 18:59 PM IST
 
 ## Comment Driven Development (CDD) with Visual Studio 2026
 
